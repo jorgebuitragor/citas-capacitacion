@@ -1,0 +1,10 @@
+.env
+.DS_Store
+*.log
+mysql-data/
+.idea/
+.vscode/
+
+# Repositorios Git independientes; la raíz solo versiona coordinación e infraestructura.
+citas-api/
+citas-web/
