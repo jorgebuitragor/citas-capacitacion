@@ -1,0 +1,15 @@
+services:
+  mysql:
+    environment:
+      MYSQL_DATABASE: citas_jorge_buitrago
+
+  citas-api-dev:
+    environment:
+      DB_URL: jdbc:mysql://mysql:3306/citas_jorge_buitrago
+
+  citas-web-dev:
+    volumes:
+      - web_node_modules:/workspace/node_modules
+
+volumes:
+  web_node_modules:

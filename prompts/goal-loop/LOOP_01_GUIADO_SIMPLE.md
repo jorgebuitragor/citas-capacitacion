@@ -1,14 +1,14 @@
-# LOOP 1 — guiado sencillo: corregir doble reserva
+# LOOP 1 — guiado sencillo S4: cancelación de cita
 
 > Este es el **patrón de loop S4**, no necesariamente el slash `/loop` de Claude.
 
 ## Escenario
-Existe una prueba roja que demuestra que dos solicitudes pueden intentar tomar el mismo slot.
+Existe una prueba roja, un criterio pendiente o un defecto acotado en la cancelación de una cita propia.
 
 ## Prompt estandarizado para Codex (usar con `/goal`)
 
 ```text
-/goal Ejecuta un loop Builder/Verifier para corregir exclusivamente el defecto de doble reserva de slots. Máximo 3 iteraciones. En cada iteración: BUILDER lee la prueba fallida y aplica el cambio mínimo; ejecuta las pruebas; luego VERIFIER, en revisión separada, inspecciona HU/DoD, git diff y resultado de pruebas y devuelve PASS o FAIL con causa concreta. Si FAIL, usa únicamente ese feedback para la siguiente iteración. No cambies UI ni esquema salvo que sea imprescindible y esté justificado. Finaliza cuando el test de concurrencia/reserva incompatible pase junto con la suite relacionada, o detente BLOCKED después de 3 iteraciones dejando un log de cada intento.
+/goal Ejecuta un loop Builder/Verifier para completar o corregir exclusivamente HU-019 Cancelar cita, con HU-018 como dependencia de consulta. Máximo 3 iteraciones. Antes de modificar, verifica que ambas HU están aprobadas, que sus dependencias S3 están completadas con evidencia y que existe contrato REST aplicable. En cada iteración, BUILDER lee el fallo y aplica el cambio mínimo en citas-api y, solo si el flujo lo requiere, citas-web; ejecuta las verificaciones reales disponibles. Luego VERIFIER, en revisión separada y sin implementar, revisa HU/DoD, diff, contrato, pruebas y evidencia. PASS exige: USER cancela solo una cita propia, futura y no terminal; queda CANCELLED; se liberan los slots; se registra el historial; intentos sobre cita ajena, pasada, terminal o ya cancelada no cambian datos; la UI evita doble envío y refleja éxito/error cuando aplique. Si FAIL, usa únicamente ese feedback en la siguiente iteración. No reactives citas, no cambies reglas fuera de HU-019 y no inventes ventanas adicionales de cancelación. Si falta una regla o contrato, pausa y escala. Finaliza con PASS o BLOCKED tras 3 iteraciones. Registra cada iteración en citas-api/docs/evidence/goals-loops/S4/.
 ```
 
 ## En Claude Code

@@ -1,0 +1,5 @@
+# GOAL S4.04 — Bandeja administrativa y auditoría
+
+```text
+/goal Implementa HU-024 Consultar bandeja administrativa y HU-025 Consultar auditoría de estados. Lee PRD RF-18, RF-19 y RN-12; HU/DoD; contrato; decisiones aprobadas; AGENTS y diseño aprobado. Inicia solo si estas HU y sus dependencias están aprobadas y completadas, y existe matriz aprobada de visibilidad de auditoría por rol. La meta se cumple cuando ADMIN consulta solicitudes especializadas REQUESTED y reprogramaciones PENDING con filtros por sede, profesional, especialidad y fecha; roles no ADMIN son denegados; los actores autorizados ven eventos pertinentes con estado, actor aplicable, fuente, fecha/hora y motivo aplicable; no existe endpoint ni UI CRUD para editar o eliminar auditoría; la interfaz comunica loading, empty, error y éxito; y las pruebas, contrato y verificaciones disponibles pasan. No agregues paginación, orden o permisos no aprobados. Si falta una decisión, pausa y escala. Máximo 3 intentos por criterio y evidencia en citas-api/docs/evidence/goals-loops/S4/.
+```
