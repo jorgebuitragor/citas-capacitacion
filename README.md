@@ -84,13 +84,19 @@ S5-S6 MCP + n8n
 
 ## Inicio rápido de infraestructura
 
-1. Instala Docker Desktop y habilita WSL Integration.
-2. Desde esta carpeta:
+1. Instala Docker Desktop (en Windows, habilita WSL Integration).
+2. Clona solo este repositorio y, desde esta carpeta, ejecuta:
 
-```powershell
-Copy-Item .env.example .env
-.\scripts\preflight.ps1
+```bash
+./scripts/bootstrap.sh
 ```
+
+Este script clona automáticamente `citas-api` y `citas-web` con el nombre de
+carpeta que espera `docker-compose.yml` (sin importar el nombre del repo en
+GitHub), los deja en la rama `develop` y crea `.env` desde `.env.example` si
+falta. No hace falta clonar esos dos repos a mano ni renombrar carpetas.
+
+En Windows puedes ejecutarlo desde Git Bash o WSL; alternativamente, `.\scripts\preflight.ps1` sigue disponible para verificar prerrequisitos de Docker una vez que `citas-api/` y `citas-web/` ya existen.
 
 3. Levanta únicamente MySQL:
 
