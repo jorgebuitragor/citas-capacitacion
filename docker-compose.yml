@@ -52,6 +52,7 @@ services:
       JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET}
 
       APP_CORS_ALLOWED_ORIGINS: ${APP_CORS_ALLOWED_ORIGINS:-http://localhost:5173}
+      AUTOMATION_API_KEY: ${AUTOMATION_API_KEY:-}
 
     ports:
       - "${API_PORT:-8080}:8080"
@@ -88,6 +89,17 @@ services:
       - sh
       - -lc
       - tail -f /dev/null
+
+
+  # Solo para S5: SMTP de laboratorio. docker compose --profile automation up -d mailpit
+  mailpit:
+    image: axllent/mailpit:latest
+    container_name: fcv-citas-mailpit
+    profiles: ["automation"]
+    restart: unless-stopped
+    ports:
+      - "${MAILPIT_UI_PORT:-8025}:8025"
+      - "${MAILPIT_SMTP_PORT:-1025}:1025"
 
 
 volumes:
