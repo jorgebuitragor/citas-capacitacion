@@ -135,6 +135,12 @@ El script crea en cada repo:
 
 La lógica se construye en `develop`. El estudiante fusiona a `main` cuando considere el incremento estable.
 
+## Datos de prueba y cuentas
+
+Al arrancar la API se cargan solos usuarios (administradores, profesionales y pacientes con distintas
+situaciones de citas), EPS y planes sintéticos. Cuenta por defecto: `admin@demo.invalid` / `Demo1234*`.
+Lista completa, qué probar con cada cuenta y cómo refrescar fechas: [`DATOS_SEMILLA.md`](DATOS_SEMILLA.md).
+
 ## Orden recomendado
 
 1. Lee `PRD.md` y `RESTRICCIONES_TECNICAS.md`.
